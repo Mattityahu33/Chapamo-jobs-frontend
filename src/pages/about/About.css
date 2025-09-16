@@ -1,0 +1,154 @@
+/* Basic Reset and Font */
+.about-page {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #1a1a1a;
+  line-height: 1.6;
+  background-color: #fff;
+}
+
+/* Hero Section */
+.about-hero {
+  background: linear-gradient(to right, #007bff, #0056b3);
+  color: #fff;
+  padding: 4rem 1rem;
+  text-align: center;
+}
+
+.about-hero h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.about-hero p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Section Styling */
+section {
+  padding: 3rem 1rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Mission, Vision, Values Cards */
+.grid-3 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.about-card {
+  flex: 1 1 300px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-5px);
+}
+
+.about-card .icon {
+  font-size: 2rem;
+  color: #007bff;
+  margin-bottom: 1rem;
+}
+
+/* Story Section */
+.about-story h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.about-story p {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+/* Team Section */
+.about-team h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.team-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.team-member {
+  flex: 1 1 200px;
+  text-align: center;
+}
+
+.team-member img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  border: 4px solid #007bff;
+}
+
+.team-member h4 {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.team-member p {
+  color: #666;
+}
+
+/* CTA Section */
+.about-cta {
+  background-color: #f0f4f8;
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.about-cta h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.about-cta p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  padding: 0.8rem 1.6rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .grid-3, .team-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+}

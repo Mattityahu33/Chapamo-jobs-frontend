@@ -1,0 +1,200 @@
+/* CreatePortFolio.css */
+
+/* Base styles */
+.portfolio-form-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.portfolio-form-container h2 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 2rem;
+  font-size: 2.2rem;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.portfolio-form-container h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(to right, #3498db, #2ecc71);
+  border-radius: 2px;
+}
+
+/* Form styles */
+.portfolio-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.portfolio-form input,
+.portfolio-form textarea,
+.portfolio-form select {
+  padding: 1rem 1.2rem;
+  border: 2px solid #eef2f7;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: #fafbfc;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.portfolio-form input:focus,
+.portfolio-form textarea:focus,
+.portfolio-form select:focus {
+  outline: none;
+  border-color: #3498db;
+  background-color: #fff;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+.portfolio-form input:disabled {
+  background-color: #f0f4f8;
+  color: #7b8794;
+  cursor: not-allowed;
+}
+
+.portfolio-form textarea {
+  min-height: 120px;
+  resize: vertical;
+  grid-column: 1 / -1;
+}
+
+.portfolio-form select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23555' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1em;
+}
+
+/* Button styles */
+.portfolio-form button {
+  grid-column: 1 / -1;
+  padding: 1rem 2rem;
+  background: linear-gradient(to right, #3498db, #2ecc71);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  box-shadow: 0 4px 6px rgba(52, 152, 219, 0.2);
+}
+
+.portfolio-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(52, 152, 219, 0.3);
+}
+
+.portfolio-form button:active {
+  transform: translateY(0);
+}
+
+/* Form validation styles */
+.portfolio-form input:invalid:not(:focus):not(:placeholder-shown) {
+  border-color: #e74c3c;
+}
+
+.portfolio-form input:valid:not(:focus):not(:placeholder-shown) {
+  border-color: #2ecc71;
+}
+
+/* Animation for form elements */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.portfolio-form input,
+.portfolio-form textarea,
+.portfolio-form select,
+.portfolio-form button {
+  animation: fadeIn 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+.portfolio-form input:nth-child(1) { animation-delay: 0.1s; }
+.portfolio-form input:nth-child(2) { animation-delay: 0.15s; }
+.portfolio-form input:nth-child(3) { animation-delay: 0.2s; }
+.portfolio-form input:nth-child(4) { animation-delay: 0.25s; }
+.portfolio-form input:nth-child(5) { animation-delay: 0.3s; }
+.portfolio-form textarea { animation-delay: 0.35s; }
+.portfolio-form input:nth-child(7) { animation-delay: 0.4s; }
+.portfolio-form input:nth-child(8) { animation-delay: 0.45s; }
+.portfolio-form input:nth-child(9) { animation-delay: 0.5s; }
+.portfolio-form input:nth-child(10) { animation-delay: 0.55s; }
+.portfolio-form select { animation-delay: 0.6s; }
+.portfolio-form input:nth-child(12) { animation-delay: 0.65s; }
+.portfolio-form input:nth-child(13) { animation-delay: 0.7s; }
+.portfolio-form button { animation-delay: 0.75s; }
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .portfolio-form-container {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+  
+  .portfolio-form {
+    grid-template-columns: 1fr;
+  }
+  
+  .portfolio-form-container h2 {
+    font-size: 1.8rem;
+  }
+}
+
+/* Focus styles for accessibility */
+.portfolio-form input:focus,
+.portfolio-form textarea:focus,
+.portfolio-form select:focus {
+  outline: 2px solid #3498db;
+  outline-offset: 2px;
+}
+
+/* Placeholder styling */
+.portfolio-form ::placeholder {
+  color: #a0aec0;
+  opacity: 1;
+}
+
+/* Loading state for button */
+.portfolio-form button.loading {
+  position: relative;
+  color: transparent;
+}
+
+.portfolio-form button.loading::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  left: 50%;
+  margin: -10px 0 0 -10px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

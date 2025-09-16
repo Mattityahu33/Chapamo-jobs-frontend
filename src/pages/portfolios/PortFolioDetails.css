@@ -1,0 +1,251 @@
+/* PortFolioDetails.css */
+:root {
+  --primary: #4361ee;
+  --primary-light: #4895ef;
+  --secondary: #3f37c9;
+  --dark: #1b263b;
+  --light: #f8f9fa;
+  --gray: #6c757d;
+  --light-gray: #e9ecef;
+  --success: #4cc9f0;
+  --warning: #f72585;
+  --danger: #ef233c;
+  --border-radius: 12px;
+  --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --transition: all 0.3s ease;
+}
+
+/* Base Styles */
+.portfolio-details-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--dark);
+}
+
+/* Back Link */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  transition: var(--transition);
+}
+
+.back-link:hover {
+  color: var(--secondary);
+  transform: translateX(-3px);
+}
+
+/* Main Card */
+.portfolio-details-card {
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+  padding: 2.5rem;
+}
+
+/* Profile Section */
+.profile-section {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.profile-image-large {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.basic-info h2 {
+  font-size: 2rem;
+  margin: 0 0 0.5rem;
+  color: var(--dark);
+}
+
+.profession-title {
+  font-size: 1.1rem;
+  color: var(--primary);
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--gray);
+  margin: 0;
+}
+
+.location::before {
+  content: '📍';
+}
+
+/* Details Section */
+.details-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.details-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.detail-item {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.detail-label {
+  font-weight: 600;
+  color: var(--dark);
+  min-width: 120px;
+}
+
+.detail-value {
+  flex: 1;
+  color: var(--gray);
+}
+
+.detail-value a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: var(--transition);
+  font-weight: 500;
+}
+
+.detail-value a:hover {
+  color: var(--secondary);
+  text-decoration: underline;
+}
+
+/* About Section */
+.about-section {
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: rgba(67, 97, 238, 0.05);
+  border-radius: var(--border-radius);
+}
+
+.about-section h3 {
+  font-size: 1.5rem;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: var(--dark);
+  position: relative;
+  display: inline-block;
+}
+
+.about-section h3::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: var(--primary);
+  border-radius: 2px;
+}
+
+.about-section p {
+  line-height: 1.8;
+  color: var(--dark);
+  margin: 0;
+}
+
+/* Meta Info */
+.meta-info {
+  text-align: right;
+  font-size: 0.85rem;
+  color: var(--gray);
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--light-gray);
+}
+
+/* Loading and Error States */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  font-size: 1.2rem;
+  color: var(--gray);
+}
+
+.error-message {
+  padding: 2rem;
+  text-align: center;
+  color: var(--danger);
+  font-weight: 500;
+  background: rgba(239, 35, 60, 0.1);
+  border-radius: var(--border-radius);
+  margin: 2rem auto;
+  max-width: 600px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .profile-section {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+  
+  .profile-image-large {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .basic-info h2 {
+    font-size: 1.8rem;
+  }
+  
+  .portfolio-details-card {
+    padding: 1.5rem;
+  }
+  
+  .details-section {
+    grid-template-columns: 1fr;
+  }
+  
+  .detail-item {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .about-section {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-details-container {
+    padding: 0 1rem;
+  }
+  
+  .basic-info h2 {
+    font-size: 1.5rem;
+  }
+  
+  .about-section h3 {
+    font-size: 1.3rem;
+  }
+}

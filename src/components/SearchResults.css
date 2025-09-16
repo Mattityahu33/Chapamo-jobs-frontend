@@ -1,0 +1,239 @@
+/* Modern CSS for Search Results Page */
+.search-results-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+  background-color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  color: #333333;
+  line-height: 1.6;
+}
+
+.search-results-page h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #222222;
+}
+
+.search-results-page h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #444444;
+}
+
+.search-results-page h4 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 8px;
+}
+
+/* Filter Section */
+.search-filters {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 24px;
+}
+
+.search-filters p {
+  font-weight: 500;
+  margin-bottom: 12px;
+  color: #555555;
+}
+
+.filter-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.filter-tag {
+  background-color: #e8f4ff;
+  color: #1976d2;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.remove-filter {
+  background: none;
+  border: none;
+  color: #1976d2;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.remove-filter:hover {
+  background-color: #1976d2;
+  color: white;
+}
+
+/* Results Sections */
+.results-section {
+  margin-bottom: 40px;
+}
+
+.results-count {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+/* Sort Options */
+.sort-options {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sort-options label {
+  font-size: 14px;
+  color: #666666;
+}
+
+.sort-options select {
+  padding: 8px 12px;
+  border: 1px solid #dddddd;
+  border-radius: 6px;
+  background-color: white;
+  font-size: 14px;
+  color: #444444;
+}
+
+/* Result Cards */
+.result-card {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.result-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+}
+
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.company-logo {
+  width: 50px;
+  height: 50px;
+  background-color: #1976d2;
+  color: white;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.job-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.job-detail {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #666666;
+  font-size: 14px;
+}
+
+.salary-highlight {
+  color: #2e7d32;
+  font-weight: 500;
+}
+
+/* Skills */
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 15px 0;
+}
+
+.skill-tag {
+  background-color: #e8f4ff;
+  color: #1976d2;
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 13px;
+}
+
+/* Buttons and Links - Blue Accent */
+.view-more-btn {
+  display: inline-block;
+  background-color: #1976d2;
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 500;
+  margin-top: 10px;
+  transition: background-color 0.2s;
+  border: none;
+  cursor: pointer;
+}
+
+.view-more-btn:hover {
+  background-color: #1565c0;
+}
+
+/* Loading State */
+.search-results-page p {
+  color: #555555;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .search-results-page {
+    padding: 16px;
+  }
+  
+  .results-count {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .job-header {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .company-logo {
+    align-self: flex-start;
+  }
+  
+  .job-details {
+    gap: 10px;
+  }
+}
