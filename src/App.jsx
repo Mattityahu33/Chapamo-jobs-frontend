@@ -1,8 +1,8 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { createHashRouter, RouterProvider, Outlet, useRouteError } from 'react-router-dom';
 import './App.css';
 import './index.css';
+
 import Navbar from './components/navbar/Navbar';
 import Footer from './components/footer/Footer';
 import Home from './pages/home/Home';
@@ -19,7 +19,6 @@ import Contact from './pages/contact/Contact';
 import SearchResults from './components/SearchResults';
 import SearchForm from './components/SearchForm';
 import AdminDashboard from './pages/protected/admin/AdminDashboard';
-
 import AdminLayout from './pages/protected/admin/AdminLayout';
 import PostsManagement from './pages/protected/admin/PostsManagement';
 import UserManagement from './pages/protected/admin/UserManagement';
@@ -31,24 +30,31 @@ import Login from './pages/auth/login/Login';
 import Register from './pages/auth/register/Register';
 import Apply from './pages/jobs/Apply';
 
-const Layout = () => {
+const Layout = () => (
+  <div className="page-wrapper">
+    <Navbar />
+    <main className="content">
+      <Outlet />
+    </main>
+    <Footer />
+  </div>
+);
+
+const RouteErrorBoundary = () => {
+  const error = useRouteError();
   return (
-    <>
-    <div className="page-wrapper">
-      <Navbar />
-      <main className="content">
-        <Outlet />
-      </main>
-      <Footer />
+    <div style={{ padding: '2rem', textAlign: 'center' }}>
+      <h1>Oops! Something went wrong.</h1>
+      <p>{error?.message || 'An unexpected error occurred.'}</p>
     </div>
-    </>
   );
 };
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: <Layout />,
+    errorElement: <RouteErrorBoundary />,
     children: [
       { path: "/", element: <Home /> },
       {
@@ -65,28 +71,20 @@ const router = createBrowserRouter([
         children: [
           { index: true, element: <PortFolios /> },
           { path: ":id", element: <PortFolioDetails /> }
-        
         ]
-      }, 
-      
+      },
       { path: "create", element: <CreatePortFolio /> },
-
-
-      { path: "news", children: [ { index: true, element: <News /> }, 
-        { path: ":id", element: <NewsDetails /> } ] },
-
-        
+      {
+        path: "news",
+        children: [
+          { index: true, element: <News /> },
+          { path: ":id", element: <NewsDetails /> }
+        ]
+      },
       { path: "about", element: <About /> },
       { path: "contact", element: <Contact /> },
-      
-      // Search routes
-      {path: "search-results", element: <SearchResults />},
-      {path: "search", element: <SearchForm />},
-
-
-
-
-      // Admin-protected routes
+      { path: "search-results", element: <SearchResults /> },
+      { path: "search", element: <SearchForm /> },
       {
         path: "admin",
         children: [
@@ -97,8 +95,6 @@ const router = createBrowserRouter([
           { path: "documentation", element: <ProjectDoc /> }
         ]
       },
-
-      // User-protected routes
       {
         path: "user",
         children: [
@@ -109,18 +105,12 @@ const router = createBrowserRouter([
       }
     ]
   },
-
-  // Auth routes (outside Layout)
   { path: "/register", element: <Register /> },
   { path: "/login", element: <Login /> }
 ]);
 
-const App = () => {
-  return (
-    <div>
-      <RouterProvider router={router} />
-    </div>
-  );
-};
+const App = () => (
+  <RouterProvider router={router} />
+);
 
 export default App;

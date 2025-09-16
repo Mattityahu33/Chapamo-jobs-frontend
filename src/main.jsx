@@ -3,11 +3,14 @@ import { createRoot } from 'react-dom/client';
 import './index.css';
 import App from './App.jsx';
 import { AuthContextProvider } from './context/AuthContext.jsx';
+import { HashRouter } from 'react-router-dom'; // ✅ Use HashRouter for GitHub Pages
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <AuthContextProvider>
-      <App />
-    </AuthContextProvider>
+    <HashRouter>
+      <AuthContextProvider>
+        <App />
+      </AuthContextProvider>
+    </HashRouter>
   </StrictMode>
 );
