@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../../../api/api";
 import "./UserDashboard.css";
 
 export default function UserDashboard() {
@@ -18,7 +18,7 @@ export default function UserDashboard() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await axios.get("/api/auth/me", { withCredentials: true });
+        const res = await api.get("/auth/me", { withCredentials: true });
         setUser(res.data);
       } catch (err) {
         console.error(err);
@@ -37,7 +37,7 @@ export default function UserDashboard() {
 
     const fetchPortfolio = async () => {
       try {
-        const res = await axios.get("/api/portfolios/user/me", { withCredentials: true });
+        const res = await api.get("/portfolios/user/me", { withCredentials: true });
         setPortfolio(res.data);
       } catch (err) {
         console.error(err);
@@ -62,7 +62,7 @@ export default function UserDashboard() {
     }
 
     try {
-      await axios.delete(`/api/portfolios/${portfolio.id}`, { withCredentials: true });
+      await api.delete(`/portfolios/${portfolio.id}`, { withCredentials: true });
       alert("Your portfolio has been deleted.");
       setPortfolio(null); // Remove portfolio from state
       navigate("/"); // Redirect after deletion

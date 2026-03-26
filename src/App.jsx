@@ -1,5 +1,5 @@
 import React from 'react';
-import { createHashRouter, RouterProvider, Outlet, useRouteError } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import './index.css';
 
@@ -30,87 +30,43 @@ import Login from './pages/auth/login/Login';
 import Register from './pages/auth/register/Register';
 import Apply from './pages/jobs/Apply';
 
-const Layout = () => (
+const Layout = ({ children }) => (
   <div className="page-wrapper">
     <Navbar />
-    <main className="content">
-      <Outlet />
-    </main>
+    <main className="content">{children}</main>
     <Footer />
   </div>
 );
 
-const RouteErrorBoundary = () => {
-  const error = useRouteError();
-  return (
-    <div style={{ padding: '2rem', textAlign: 'center' }}>
-      <h1>Oops! Something went wrong.</h1>
-      <p>{error?.message || 'An unexpected error occurred.'}</p>
-    </div>
-  );
-};
-
-const router = createHashRouter([
-  {
-    path: "/",
-    element: <Layout />,
-    errorElement: <RouteErrorBoundary />,
-    children: [
-      { path: "/", element: <Home /> },
-      {
-        path: "jobs",
-        children: [
-          { index: true, element: <Jobs /> },
-          { path: ":id", element: <JobDetails /> },
-          { path: ":id/apply", element: <Apply /> }
-        ]
-      },
-      { path: "postJob", element: <PostJob /> },
-      {
-        path: "portfolios",
-        children: [
-          { index: true, element: <PortFolios /> },
-          { path: ":id", element: <PortFolioDetails /> }
-        ]
-      },
-      { path: "create", element: <CreatePortFolio /> },
-      {
-        path: "news",
-        children: [
-          { index: true, element: <News /> },
-          { path: ":id", element: <NewsDetails /> }
-        ]
-      },
-      { path: "about", element: <About /> },
-      { path: "contact", element: <Contact /> },
-      { path: "search-results", element: <SearchResults /> },
-      { path: "search", element: <SearchForm /> },
-      {
-        path: "admin",
-        children: [
-          { index: true, element: <AdminDashboard /> },
-          { path: "posts-management", element: <PostsManagement /> },
-          { path: "user-mangement", element: <UserManagement /> },
-          { path: "layout", element: <AdminLayout /> },
-          { path: "documentation", element: <ProjectDoc /> }
-        ]
-      },
-      {
-        path: "user",
-        children: [
-          { index: true, element: <UserDashboard /> },
-          { path: "SavedJobs", element: <SavedJobs /> },
-          { path: "profile", element: <UserProfile /> }
-        ]
-      }
-    ]
-  },
-  { path: "/register", element: <Register /> },
-  { path: "/login", element: <Login /> }
-]);
-
 const App = () => (
-  <RouterProvider router={router} />
+  <Layout>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/jobs" element={<Jobs />} />
+      <Route path="/jobs/:id" element={<JobDetails />} />
+      <Route path="/jobs/:id/apply" element={<Apply />} />
+      <Route path="/postJob" element={<PostJob />} />
+      <Route path="/portfolios" element={<PortFolios />} />
+      <Route path="/portfolios/:id" element={<PortFolioDetails />} />
+      <Route path="/create" element={<CreatePortFolio />} />
+      <Route path="/news" element={<News />} />
+      <Route path="/news/:id" element={<NewsDetails />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/search-results" element={<SearchResults />} />
+      <Route path="/search" element={<SearchForm />} />
+      <Route path="/admin" element={<AdminDashboard />} />
+      <Route path="/admin/posts-management" element={<PostsManagement />} />
+      <Route path="/admin/user-mangement" element={<UserManagement />} />
+      <Route path="/admin/layout" element={<AdminLayout />} />
+      <Route path="/admin/documentation" element={<ProjectDoc />} />
+      <Route path="/user" element={<UserDashboard />} />
+      <Route path="/user/SavedJobs" element={<SavedJobs />} />
+      <Route path="/user/profile" element={<UserProfile />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+    </Routes>
+  </Layout>
 );
 
 export default App;

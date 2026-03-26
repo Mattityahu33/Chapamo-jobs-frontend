@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../api/api";
 import { createContext, useEffect, useState } from "react";
 
 export const AuthContext = createContext();
@@ -12,7 +12,7 @@ export const AuthContextProvider = ({ children }) => {
 
   const register = async (formData) => {
     try {
-      const res = await axios.post(`${API}/auth/register`, formData);
+      const res = await api.post(`/auth/register`, formData);
       return res.data;
     } catch (err) {
       setError(err.response?.data || "Registration failed");
@@ -23,7 +23,7 @@ export const AuthContextProvider = ({ children }) => {
 
   const login = async (formData) => {
     try {
-      const res = await axios.post(`${API}/auth/login`, formData, { withCredentials: true });
+      const res = await api.post(`/auth/login`, formData, { withCredentials: true });
       setCurrentUser(res.data);
       return res.data;
     } catch (err) {
@@ -34,7 +34,7 @@ export const AuthContextProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      await axios.post(`${API}/auth/logout`, {}, { withCredentials: true });
+      await api.post(`/auth/logout`, {}, { withCredentials: true });
       setCurrentUser(null);
     } catch {
       setError("Logout failed");
@@ -43,7 +43,7 @@ export const AuthContextProvider = ({ children }) => {
 
   const fetchUser = async () => {
     try {
-      const res = await axios.get(`${API}/auth/me`, { withCredentials: true });
+      const res = await api.get(`/auth/me`, { withCredentials: true });
       setCurrentUser(res.data);
     } catch (err) {
       if (err.response?.status === 401) {

@@ -59,7 +59,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar__container">
-        <Link to="/" id="navbar__logo" onClick={closeAllMenus}>Tubombe</Link>
+        <Link to="/" id="navbar__logo" onClick={closeAllMenus}>chapamo</Link>
 
         <div className={`navbar__toggle ${isMobileMenuOpen ? "active" : ""}`} onClick={toggleMobileMenu}>
           <span className="bar" />

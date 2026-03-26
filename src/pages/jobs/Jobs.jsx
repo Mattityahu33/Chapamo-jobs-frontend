@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import axios from 'axios';
+import api from '../../api/api';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import './Jobs.css';
 import debounce from 'lodash/debounce';
@@ -46,7 +46,7 @@ const JobsList = () => {
       debounce(async (filters) => {
         try {
           setLoading(true);
-          const response = await axios.get("/api/job_postings", {
+          const response = await api.get("/job_postings", {
             params: {
               search: filters.search || undefined,
               jobTypes: filters.jobTypes.length ? filters.jobTypes.join(',') : undefined,

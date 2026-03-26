@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../../../api/api";
 import "./UserManagement.css";
 
 const UserManagement = () => {
@@ -14,7 +14,7 @@ const UserManagement = () => {
 
   const fetchUsers = async () => {
     try {
-      const res = await axios.get("/api/admin/users"); // Backend route
+      const res = await api.get("/admin/users"); // Backend route
       setUsers(res.data);
     } catch (err) {
       console.error(err);
@@ -23,7 +23,7 @@ const UserManagement = () => {
 
   const handleStatusChange = async (id, status) => {
     try {
-      await axios.put(`/api/admin/users/${id}/status`, { status });
+      await api.put(`/admin/users/${id}/status`, { status });
       fetchUsers();
     } catch (err) {
       console.error(err);

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../../../api/api";
 import "./UserProfile.css"; // Optional styling
 
 const UserProfile = () => {
@@ -13,7 +13,7 @@ const UserProfile = () => {
   useEffect(() => {
     const fetchPortfolio = async () => {
       try {
-        const res = await axios.get("/api/portfolios/user/me", { withCredentials: true });
+        const res = await api.get("/portfolios/user/me", { withCredentials: true });
         setPortfolio(res.data);
         setFormData(res.data); // prefill form
       } catch (err) {
@@ -35,7 +35,7 @@ const UserProfile = () => {
   const handleUpdate = async () => {
     if (!portfolio?.id) return;
     try {
-      await axios.put(`/api/portfolios/${portfolio.id}`, formData, { withCredentials: true });
+      await api.put(`/portfolios/${portfolio.id}`, formData, { withCredentials: true });
       setPortfolio(formData);
       setEditing(false);
       setMessage("Portfolio updated successfully");

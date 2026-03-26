@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import axios from 'axios';
+import api from '../../api/api';
 import { AuthContext } from '../../context/AuthContext';
 import { 
 FaBookmark, 
@@ -37,8 +37,8 @@ if (!id) return;
 const fetchSimilarJobs = async (category) => {
     try {
     setSimilarLoading(true);
-    const res = await axios.get(
-        `/api/job_postings?category=${encodeURIComponent(category)}&exclude=${id}&limit=4`
+    const res = await api.get(
+        `/job_postings?category=${encodeURIComponent(category)}&exclude=${id}&limit=4`
     );
     setSimilarJobs(res.data);
     } catch (err) {
@@ -51,7 +51,7 @@ const fetchSimilarJobs = async (category) => {
 const fetchJobDetails = async () => {
     try {
     setLoading(true);
-    const res = await axios.get(`/api/job_postings/${id}`);
+    const res = await api.get(`/job_postings/${id}`);
     setJob(res.data);
 
     // Load similar jobs
@@ -73,7 +73,7 @@ if (!currentUser?.id) {
 }
 
 try {
-    await axios.post(`/api/saved-jobs/${id}`, { userId: currentUser.id });
+    await api.post(`/saved-jobs/${id}`, { userId: currentUser.id });
     setIsSaved(true);
 } catch (err) {
     console.error('❌ Failed to save job:', err);

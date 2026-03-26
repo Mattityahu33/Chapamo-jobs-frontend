@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import axios from "axios";
+import api from "../../../api/api";
 import { AuthContext } from "../../../context/AuthContext";
 import { Link } from "react-router-dom";
 import "./SavedJobs.css";
@@ -16,7 +16,7 @@ const SavedJobs = () => {
     const fetchSavedJobs = async () => {
       try {
         setLoading(true);
-        const res = await axios.get(`/api/saved-jobs`, {
+        const res = await api.get(`/saved-jobs`, {
           params: { userId: currentUser.id },
         });
         setSavedJobs(res.data);
@@ -36,7 +36,7 @@ const SavedJobs = () => {
   // Unsave a job
   const handleUnsave = async (jobId) => {
     try {
-      await axios.delete(`/api/saved-jobs/${jobId}`, {
+      await api.delete(`/saved-jobs/${jobId}`, {
         data: { userId: currentUser.id } // ✅ still sending userId
       });
   

@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import axios from 'axios';
+import api from '../../api/api';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import './CreatePortFolio.css';
@@ -46,7 +46,7 @@ const CreatePortFolio = () => {
     console.log("Sending to backend:", formData); // ✅ log here
   
     try {
-      await axios.post('/api/portfolios', formData, { withCredentials: true });
+      await api.post('/portfolios', formData, { withCredentials: true });
       alert('Portfolio created!');
       navigate('/portfolios');
     } catch (err) {

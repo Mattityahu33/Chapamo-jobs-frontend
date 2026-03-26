@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../../../api/api";
 import { Link } from "react-router-dom";
 import "./PostsManagement.css";
 
@@ -12,7 +12,7 @@ const PostManagement = () => {
 
   const fetchPendingJobs = async () => {
     try {
-      const res = await axios.get("/api/admin/pending", { withCredentials: true });
+      const res = await api.get("/admin/pending", { withCredentials: true });
       setPendingJobs(res.data);
     } catch (err) {
       console.error(err);
@@ -21,7 +21,7 @@ const PostManagement = () => {
 
   const handleApprove = async (id) => {
     try {
-      await axios.put(`/api/admin/${id}/approve`, {}, { withCredentials: true });
+      await api.put(`/admin/${id}/approve`, {}, { withCredentials: true });
       setPendingJobs(pendingJobs.filter((job) => job.id !== id));
     } catch (err) {
       console.error(err);
@@ -30,7 +30,7 @@ const PostManagement = () => {
 
   const handleReject = async (id) => {
     try {
-      await axios.put(`/api/admin/${id}/reject`, {}, { withCredentials: true });
+      await api.put(`/admin/${id}/reject`, {}, { withCredentials: true });
       setPendingJobs(pendingJobs.filter((job) => job.id !== id));
     } catch (err) {
       console.error(err);

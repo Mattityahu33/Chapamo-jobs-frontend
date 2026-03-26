@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import api from "../../../api/api";
 import "./AdminDashboard.css";
 
 const AdminDashboard = () => {
@@ -11,7 +11,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     const fetchAdminData = async () => {
       try {
-        const res = await axios.get("/api/auth/me", { withCredentials: true });
+        const res = await api.get("/auth/me", { withCredentials: true });
         // Assuming backend returns user info including role, name, email
         setAdminInfo(res.data);
       } catch (err) {

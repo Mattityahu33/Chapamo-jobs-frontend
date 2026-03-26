@@ -1,5 +1,5 @@
 import { useState } from 'react'; 
-import axios from 'axios';
+import api from '../../../api/api';
 import { useNavigate } from 'react-router-dom';
 import './PostJob.css';
 
@@ -120,7 +120,7 @@ if (!validateForm()) {
 setIsSubmitting(true);
 
 try {
-    await axios.post('/api/job_postings', formData);
+    await api.post('/job_postings', formData);
     navigate('/jobs', { state: { success: 'Job posted successfully!' } });
 } catch (error) {
     console.error('Error posting job:', error);

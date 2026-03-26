@@ -1,6 +1,7 @@
 {
   "name": "chapamo-jobs",
-  "homepage": "https://Mattityahu33.github.io/hermetico/",
+  "homepage": "https://Mattityahu33.github.io/hermetico/", 
+  
   "private": true,
   "version": "0.0.0",
   "type": "module",

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../../api/api';
 import { Link } from 'react-router-dom';
 import './PortFolios.css';
 
@@ -11,7 +11,7 @@ const PortFolios = () => {
   useEffect(() => {
     const fetchPortfolios = async () => {
       try {
-        const res = await axios.get('/api/portfolios');
+        const res = await api.get('/portfolios');
         setPortfolios(res.data);
         setLoading(false);
       } catch (err) {

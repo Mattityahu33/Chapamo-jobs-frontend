@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import api from "../../../api/api";
 import "../AuthContainer.css";
 
 const Register = () => {
@@ -88,7 +88,7 @@ const Register = () => {
     setUsernameExists(false);
 
     try {
-      const res = await axios.post('/api/auth/register', formData);
+      const res = await api.post('/auth/register', formData);
       
       if (res.data.success) {
         // Redirect to login page after successful registration

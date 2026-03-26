@@ -6,6 +6,7 @@ import { FiSearch, FiMapPin } from 'react-icons/fi';
 import { FaArrowRight, FaChevronLeft, FaChevronRight, FaQuoteLeft  } from 'react-icons/fa';
 import axios from 'axios';
 import SearchForm from '../../components/SearchForm';
+import api from '../../api/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
   faBriefcase,
@@ -88,7 +89,7 @@ const Hero = () => {
     if (!searchTerm.trim() && !location.trim()) return;
 
     try {
-      const { data: results } = await axios.get('/api/search', {
+      const { data: results } = await api.get('/search', {
         params: { term: searchTerm, location }
       });
 
@@ -350,7 +351,7 @@ const JobBoard = () => {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const response = await axios.get("/api/job_postings");
+        const response = await api.get("/job_postings");
         setJobs(response.data.slice(0, 12)); // Only get 12 latest jobs
       } catch (err) {
         console.error("Failed to fetch jobs", err);
@@ -531,7 +532,7 @@ const HomepagePortfolios = () => {
   useEffect(() => {
     const fetchPortfolios = async () => {
       try {
-        const res = await axios.get('/api/portfolios?limit=12'); // Limit to 12
+        const res = await api.get('/portfolios?limit=12'); // Limit to 12
         setPortfolios(res.data);
         setLoading(false);
       } catch (err) {

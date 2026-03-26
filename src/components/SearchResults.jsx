@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
-import axios from 'axios';
+import api from '../api/api';
 import "./SearchResults.css"
 
 const SearchResults = () => {
@@ -23,7 +23,7 @@ const SearchResults = () => {
   useEffect(() => {
     const fetchSearchResults = async () => {
       try {
-        const response = await axios.get('/api/search', {
+        const response = await api.get('/search', {
           params: {
             search: searchTerm,
             location: locationTerm,
